@@ -7,6 +7,7 @@ public class NumberWizard : MonoBehaviour {
 	private int _min; 
 	private int _guess;
 	private bool _gameRangeChosen;
+	
 	// Use this for initialization
 	private void Start () {
 		
@@ -15,7 +16,7 @@ public class NumberWizard : MonoBehaviour {
 	
 	// Update is called once per frame
 	private void Update () {
-	
+		//Ready to make guesses if range is set. 
 		if(_gameRangeChosen){
 			if (Input.GetKeyDown(KeyCode.UpArrow)){
 				_min = _guess; 
@@ -27,11 +28,10 @@ public class NumberWizard : MonoBehaviour {
 				print("I won!");
 				StartGame();
 			}
+		//Otherwise listen for range choice. 
 		} else {
 			ChooseRange();
 		}
-		
-		
 	
 	}
 	private void StartGame(){
@@ -46,9 +46,6 @@ public class NumberWizard : MonoBehaviour {
 		print ("====");
 		print ("For 10,000-1,000,000, press 3");
 		print ("====");
-		
-		ChooseRange();
-		
 	}
 	
 	private void ChooseRange(){
@@ -78,14 +75,15 @@ public class NumberWizard : MonoBehaviour {
 			print ("Go ahead, pick a number in your head, but don't tell me! I'll try to guess your number :)");
 			_max++;
 			NextGuess();
-		}
-	
-		
+		}	
 	}
+	
 	private void NextGuess(){
-		
+			
 		_guess = Random.Range(_min, _max);
 		print ("Is the number higher or lower than " +_guess +"?");
 		print ("Up = higher, down = lower, return = equal");
+
+			
 	}
 }
